@@ -1,0 +1,66 @@
+<html>
+  <head>
+  <title>Binary to Decimal convertor</title>
+  <style>
+    html {
+  font: 15px Verdana, sans-serif;
+}
+.main {
+  border: 2px solid green;
+  margin: 150px 350px;
+  padding: 70px;
+  border-radius:25px;
+  text-align: center
+}
+#convert {
+  padding: 12px;
+  border-radius: 20px;
+  border:1px solid white;
+  background: #6ee670
+}
+#convert:hover {
+  background: yellow;
+}
+  </style>
+</head>
+<body>
+  <div class="main">
+  <h1>Binary to Decimal convertor [Bin2Dec]: </h1>
+  Binary
+  <input id="userInput" type="text" placeholder="enter binary here"></input><br /><br />
+  Decimal <input id="output"></input><br /><br />
+  <button id="convert" onclick="convertToBinary()">Convert</button>
+  </div>
+  <script>
+    var convertToBinary = function(){
+var binInput = document.getElementById("userInput").value;
+  document.getElementById("output").value = checkInput(binInput);
+
+  console.log(binInput);
+}
+
+
+/* Method to compare whether input conforms to Binary values*/
+var checkInput = function(input){
+  if(/[^10]/g.test(input)){
+    console.log("Value entered is not in binary form");
+    return "binary inputs only";
+     } else {
+      console.log("You've entered a binary number");
+       return convertToDecimal(input);
+    }
+}
+
+var convertToDecimal = function(binVal){
+  var result = 0;
+  var n = binVal.length - 1;
+  for (i = 0; i < binVal.length; i++){
+    var digit = binVal.charAt(i);
+    result = result + (digit * Math.pow(2, n));
+    n--;
+  }
+  return result;
+}
+   </script>
+  </body>
+</html>
